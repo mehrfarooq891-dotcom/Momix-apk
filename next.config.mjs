@@ -8,6 +8,7 @@ const nextConfig = {
       },
     ],
   },
+  // Isay khali chhor dein taake Vercel khud manage kare
 };
 
 export default nextConfig;
