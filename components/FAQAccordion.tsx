@@ -61,14 +61,14 @@ export default function FAQAccordion({ limit }: { limit?: number }) {
       {displayedFaqs.map((faq, index) => (
         <div 
           key={index} 
-          className="bg-[#141414] border border-white/5 rounded-2xl overflow-hidden transition-all duration-300"
+          className={`bg-[#141414] border rounded-2xl overflow-hidden transition-all duration-300 ${openIndex === index ? "border-[#e50914]/30 shadow-lg shadow-red-900/5" : "border-white/5"}`}
         >
           <button
             onClick={() => setOpenIndex(openIndex === index ? null : index)}
             className="w-full px-8 py-6 flex justify-between items-center text-left hover:bg-white/5 transition-colors"
           >
-            <span className="font-bold text-lg">{faq.question}</span>
-            {openIndex === index ? <ChevronUp className="text-primary" /> : <ChevronDown className="text-zinc-500" />}
+            <span className={`font-bold text-lg transition-colors ${openIndex === index ? "text-[#e50914]" : "text-white"}`}>{faq.question}</span>
+            {openIndex === index ? <ChevronUp className="text-[#e50914]" /> : <ChevronDown className="text-zinc-500" />}
           </button>
           
           <div 
@@ -76,7 +76,7 @@ export default function FAQAccordion({ limit }: { limit?: number }) {
               openIndex === index ? "max-h-96 pb-8 opacity-100" : "max-h-0 opacity-0"
             } overflow-hidden`}
           >
-            <p className="text-zinc-400 leading-relaxed">{faq.answer}</p>
+            <p className="text-zinc-400 leading-relaxed border-t border-white/5 pt-4">{faq.answer}</p>
           </div>
         </div>
       ))}

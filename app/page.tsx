@@ -1,281 +1,204 @@
 import Link from "next/link";
-import Image from "next/image";
-import { Download, Star, ShieldCheck, Zap, Globe, Tv, Smartphone, Play } from "lucide-react";
-import FeatureCard from "@/components/FeatureCard";
-import ReviewCard from "@/components/ReviewCard";
-import ScreenshotGallery from "@/components/ScreenshotGallery";
+import { Download, Play, ShieldCheck, Zap, Tv, Smartphone, Globe, Lock, Ban, DownloadCloud } from "lucide-react";
 import FAQAccordion from "@/components/FAQAccordion";
 
 export default function HomePage() {
+  const features = [
+    {
+      title: "Free Streaming",
+      desc: "Access premium movies and shows from top OTT platforms without any subscription fees.",
+      icon: <Tv className="text-[#e50914]" size={32} />,
+    },
+    {
+      title: "HD Quality",
+      desc: "Stream your favorite content in 720p, 1080p, and even 4K resolution with multiple server links.",
+      icon: <Zap className="text-[#e50914]" size={32} />,
+    },
+    {
+      title: "No Login Required",
+      desc: "Start watching immediately. No registration, no email, and no personal data needed.",
+      icon: <Lock className="text-[#e50914]" size={32} />,
+    },
+    {
+      title: "No Ads",
+      desc: "Enjoy uninterrupted entertainment with our built-in ad-blocker that removes all annoying pop-ups.",
+      icon: <Ban className="text-[#e50914]" size={32} />,
+    },
+    {
+      title: "Offline Download",
+      desc: "Download your favorite episodes and movies directly to your storage for offline viewing.",
+      icon: <DownloadCloud className="text-[#e50914]" size={32} />,
+    },
+    {
+      title: "Multi-language",
+      desc: "Content available in multiple languages including English, Hindi, Spanish, and more.",
+      icon: <Globe className="text-[#e50914]" size={32} />,
+    },
+  ];
+
+  const steps = [
+    {
+      step: "01",
+      title: "Download APK",
+      desc: "Click the download button to get the latest Momix APK file safely from our servers.",
+    },
+    {
+      step: "02",
+      title: "Enable Unknown Sources",
+      desc: "Go to your device settings and allow installation from unknown sources to proceed.",
+    },
+    {
+      step: "03",
+      title: "Install & Enjoy",
+      desc: "Open the downloaded file, tap install, and start streaming your favorite content for free.",
+    },
+  ];
+
   return (
-    <div className="flex flex-col w-full">
+    <div className="space-y-24 pb-24">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute top-0 left-0 w-full h-full -z-10">
-          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 blur-[120px] rounded-full" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-accent/10 blur-[120px] rounded-full" />
+      <section className="container mx-auto px-4 pt-12 md:pt-24 text-center space-y-8">
+        <div className="flex flex-wrap justify-center gap-3">
+          {["v3.2.1", "Free", "No Ads", "HD"].map((badge) => (
+            <span key={badge} className="px-4 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-bold text-zinc-400">
+              {badge}
+            </span>
+          ))}
+        </div>
+        
+        <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight">
+          Momix APK - <br />
+          <span className="text-[#e50914]">Free HD Streaming App</span>
+        </h1>
+        
+        <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+          The ultimate streaming companion for Android. Get instant access to thousands of movies, web series, and live TV channels in HD quality—completely free.
+        </p>
+
+        <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+          <Link href="/download" className="btn-primary text-xl px-12 py-5">
+            <Download size={24} />
+            Download Now
+          </Link>
+          <Link href="/how-to-install" className="px-12 py-5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full font-bold flex items-center justify-center gap-2 transition-all">
+            <Play size={20} fill="currentColor" />
+            How to Install
+          </Link>
         </div>
 
-        <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 animate-in fade-in slide-in-from-left duration-700">
-            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/5 border border-white/10 text-accent text-sm font-medium">
-              <Star size={14} fill="currentColor" />
-              <span>Rated 4.8/5 by 2M+ Users</span>
-            </div>
-            
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.1]">
-              Watch Anything, <br />
-              <span className="text-primary">Anywhere, Anytime.</span>
-            </h1>
-            
-            <p className="text-xl text-zinc-400 max-w-xl leading-relaxed">
-              Momix APK is the ultimate streaming companion for Android. Get instant access to thousands of movies, web series, and live TV channels in HD quality—completely free.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/download" className="btn-primary text-xl px-10 py-5 flex items-center justify-center gap-3 animate-pulse-slow">
-                <Download size={24} />
-                Download Now
-              </Link>
-              <Link href="/how-to-install" className="btn-gold text-xl px-10 py-5 flex items-center justify-center gap-3">
-                <Play size={24} fill="currentColor" />
-                How to Use
-              </Link>
-            </div>
-
-            <div className="flex items-center gap-6 text-sm text-zinc-500">
-              <div className="flex items-center gap-2">
-                <ShieldCheck size={16} className="text-green-500" />
-                <span>Virus Checked</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Zap size={16} className="text-accent" />
-                <span>Fast Servers</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Globe size={16} className="text-blue-400" />
-                <span>Global Content</span>
-              </div>
-            </div>
+        <div className="flex items-center justify-center gap-6 text-sm text-zinc-500 pt-4">
+          <div className="flex items-center gap-2">
+            <ShieldCheck size={16} className="text-green-500" />
+            <span>Virus Checked</span>
           </div>
-
-          <div className="relative hidden lg:block animate-in fade-in zoom-in duration-1000">
-            <div className="relative z-10 glass rounded-[2.5rem] p-4 rotate-3 hover:rotate-0 transition-transform duration-500">
-              <div className="bg-[#0a0a0a] rounded-[2rem] overflow-hidden border border-white/5 aspect-[9/19] relative">
-                <Image 
-                  src="https://picsum.photos/seed/momix-ui/400/800" 
-                  alt="Momix App Interface" 
-                  fill
-                  className="object-cover opacity-80"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
-                <div className="absolute bottom-8 left-0 w-full px-6 space-y-4">
-                  <div className="w-12 h-1 bg-primary rounded-full" />
-                  <h3 className="text-2xl font-bold">Premium Experience</h3>
-                  <p className="text-sm text-zinc-400">Stream your favorite content in 4K resolution without any interruptions.</p>
-                </div>
-              </div>
-            </div>
-            {/* Decorative Elements */}
-            <div className="absolute -top-10 -right-10 w-32 h-32 bg-accent/20 blur-3xl rounded-full" />
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/20 blur-3xl rounded-full" />
+          <div className="flex items-center gap-2">
+            <Zap size={16} className="text-[#e50914]" />
+            <span>Fast Servers</span>
           </div>
         </div>
       </section>
 
       {/* App Info Bar */}
-      <section className="bg-[#141414] border-y border-white/5 py-8">
+      <section className="bg-[#141414] border-y border-white/5 py-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="space-y-1">
-              <p className="text-zinc-500 text-xs uppercase tracking-widest">Version</p>
-              <p className="text-white font-bold text-lg">v3.2.1 (Latest)</p>
+              <p className="text-zinc-500 text-xs uppercase tracking-widest font-bold">Version</p>
+              <p className="text-white font-black text-xl">3.2.1</p>
             </div>
             <div className="space-y-1">
-              <p className="text-zinc-500 text-xs uppercase tracking-widest">File Size</p>
-              <p className="text-white font-bold text-lg">18.4 MB</p>
+              <p className="text-zinc-500 text-xs uppercase tracking-widest font-bold">Size</p>
+              <p className="text-white font-black text-xl">18 MB</p>
             </div>
             <div className="space-y-1">
-              <p className="text-zinc-500 text-xs uppercase tracking-widest">Last Updated</p>
-              <p className="text-white font-bold text-lg">Today</p>
+              <p className="text-zinc-500 text-xs uppercase tracking-widest font-bold">Android</p>
+              <p className="text-white font-black text-xl">5.0+</p>
             </div>
             <div className="space-y-1">
-              <p className="text-zinc-500 text-xs uppercase tracking-widest">Android Req.</p>
-              <p className="text-white font-bold text-lg">5.0 and Up</p>
+              <p className="text-zinc-500 text-xs uppercase tracking-widest font-bold">Status</p>
+              <p className="text-green-500 font-black text-xl">Working</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-[#0a0a0a]">
+      <section className="container mx-auto px-4">
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-4xl font-black tracking-tighter">Premium Features</h2>
+          <p className="text-zinc-500">Everything you need for a perfect streaming experience.</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature, i) => (
+            <div key={i} className="card-base space-y-4">
+              <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold">{feature.title}</h3>
+              <p className="text-zinc-500 text-sm leading-relaxed">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Install Guide */}
+      <section className="bg-[#050505] py-24">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Why Choose <span className="text-primary">Momix APK?</span></h2>
-            <p className="text-zinc-400">Experience entertainment like never before with these premium features available for free.</p>
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-4xl font-black tracking-tighter">How to Install</h2>
+            <p className="text-zinc-500">Simple 3-step guide to get started.</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <FeatureCard 
-              icon={<Tv className="text-primary" />}
-              title="Free Streaming"
-              description="Access premium content from Netflix, Disney+, and HBO without paying a single penny."
-            />
-            <FeatureCard 
-              icon={<Zap className="text-accent" />}
-              title="HD Quality"
-              description="Watch movies and shows in 720p, 1080p, and even 4K resolution with multiple server links."
-            />
-            <FeatureCard 
-              icon={<ShieldCheck className="text-green-500" />}
-              title="No Login Required"
-              description="Start watching immediately. No registration, no email, and no personal data needed."
-            />
-            <FeatureCard 
-              icon={<Play className="text-blue-500" />}
-              title="Ad-Free Experience"
-              description="Enjoy uninterrupted entertainment with our built-in ad-blocker that removes all annoying pop-ups."
-            />
-            <FeatureCard 
-              icon={<Download className="text-purple-500" />}
-              title="Offline Download"
-              description="Download your favorite episodes and movies directly to your storage for offline viewing."
-            />
-            <FeatureCard 
-              icon={<Globe className="text-orange-500" />}
-              title="Multi-language"
-              description="Content available in multiple languages including English, Hindi, Spanish, and more."
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Screenshots Gallery */}
-      <section className="py-24 bg-[#050505]">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-end mb-12">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold">App Screenshots</h2>
-              <p className="text-zinc-500">Take a look at the beautiful and intuitive user interface.</p>
-            </div>
-          </div>
-          <ScreenshotGallery />
-        </div>
-      </section>
-
-      {/* How it Works */}
-      <section className="py-24 bg-[#0a0a0a]">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold">How to Get Started</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-            {/* Connector Line */}
-            <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-white/5 -translate-y-1/2 -z-10" />
-            
-            <div className="text-center space-y-6">
-              <div className="w-20 h-20 bg-primary rounded-3xl flex items-center justify-center mx-auto text-3xl font-bold shadow-xl shadow-primary/20">1</div>
-              <h3 className="text-xl font-bold">Download APK</h3>
-              <p className="text-zinc-400">Click the download button to get the latest Momix APK file safely.</p>
-            </div>
-            <div className="text-center space-y-6">
-              <div className="w-20 h-20 bg-accent rounded-3xl flex items-center justify-center mx-auto text-3xl font-bold text-black shadow-xl shadow-accent/20">2</div>
-              <h3 className="text-xl font-bold">Install on Android</h3>
-              <p className="text-zinc-400">Enable &quot;Unknown Sources&quot; in settings and install the downloaded APK file.</p>
-            </div>
-            <div className="text-center space-y-6">
-              <div className="w-20 h-20 bg-green-500 rounded-3xl flex items-center justify-center mx-auto text-3xl font-bold shadow-xl shadow-green-500/20">3</div>
-              <h3 className="text-xl font-bold">Start Watching</h3>
-              <p className="text-zinc-400">Open the app, choose your favorite movie, and enjoy free streaming!</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* User Reviews */}
-      <section className="py-24 bg-[#050505]">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold">What Users Say</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <ReviewCard 
-              name="Rahul Sharma"
-              rating={5}
-              comment="Best app for movies! I was paying for 3 different subscriptions, now I have everything in one place for free. Highly recommended."
-              date="2 days ago"
-            />
-            <ReviewCard 
-              name="Sarah Jenkins"
-              rating={5}
-              comment="The streaming quality is amazing. I watched the latest web series in 4K without any buffering. The UI is also very clean."
-              date="1 week ago"
-            />
-            <ReviewCard 
-              name="Amit Patel"
-              rating={4}
-              comment="Great app, works perfectly on my Firestick. Only issue is sometimes links take a few seconds to load, but otherwise it&apos;s perfect."
-              date="3 days ago"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {steps.map((step, i) => (
+              <div key={i} className="text-center space-y-6 relative">
+                <div className="text-6xl font-black text-white/5 absolute -top-10 left-1/2 -translate-x-1/2 select-none">
+                  {step.step}
+                </div>
+                <div className="w-20 h-20 bg-[#e50914] rounded-3xl flex items-center justify-center mx-auto shadow-xl shadow-red-900/20 relative z-10">
+                  {i === 0 && <Download size={32} />}
+                  {i === 1 && <Smartphone size={32} />}
+                  {i === 2 && <Play size={32} fill="currentColor" />}
+                </div>
+                <h3 className="text-2xl font-bold relative z-10">{step.title}</h3>
+                <p className="text-zinc-500 leading-relaxed relative z-10">{step.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-[#0a0a0a]">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold">Frequently Asked Questions</h2>
-          </div>
-          <FAQAccordion limit={5} />
-          <div className="text-center mt-12">
-            <Link href="/faq" className="text-primary font-medium hover:underline">View all 10+ questions →</Link>
-          </div>
+      <section className="container mx-auto px-4 max-w-3xl">
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-4xl font-black tracking-tighter">Common Questions</h2>
+          <p className="text-zinc-500">Find answers to your doubts about Momix APK.</p>
         </div>
+        <FAQAccordion limit={5} />
       </section>
 
-      {/* Final CTA */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/10 -z-10" />
-        <div className="container mx-auto px-4 text-center space-y-8">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter">Ready to Join 2M+ Happy Streamers?</h2>
-          <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-            Don&apos;t miss out on the latest movies and shows. Download Momix APK now and start your premium journey for free.
+      {/* Bottom CTA */}
+      <section className="container mx-auto px-4">
+        <div className="bg-gradient-to-br from-[#141414] to-[#0a0a0a] border border-white/5 rounded-[3rem] p-12 md:p-24 text-center space-y-8 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#e50914]/5 blur-[100px] rounded-full" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#e50914]/5 blur-[100px] rounded-full" />
+          
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight">
+            Ready to Stream <br />
+            <span className="text-[#e50914]">Your Favorite Shows?</span>
+          </h2>
+          <p className="text-xl text-zinc-500 max-w-xl mx-auto">
+            Join millions of users and start watching premium content for free today.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/download" className="btn-primary text-2xl px-12 py-6 flex items-center gap-3">
-              <Download size={28} />
-              Download Momix v3.2.1
+          <div className="flex justify-center pt-4">
+            <Link href="/download" className="btn-primary text-2xl px-16 py-6">
+              <Download size={32} />
+              Download Momix APK
             </Link>
           </div>
-          <p className="text-sm text-zinc-500">100% Safe • No Ads • No Login • HD Content</p>
         </div>
       </section>
-
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "Momix APK",
-            "operatingSystem": "Android",
-            "applicationCategory": "EntertainmentApplication",
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.8",
-              "ratingCount": "2150000"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "USD"
-            }
-          })
-        }}
-      />
     </div>
   );
 }

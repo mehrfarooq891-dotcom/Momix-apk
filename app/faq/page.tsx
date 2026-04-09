@@ -8,60 +8,33 @@ export const metadata = {
 
 export default function FAQPage() {
   return (
-    <div className="pt-32 pb-24">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <div className="text-center space-y-6 mb-16">
-          <div className="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center mx-auto text-primary mb-8">
-            <HelpCircle size={48} />
-          </div>
-          <h1 className="text-4xl md:text-6xl font-black tracking-tighter">Frequently Asked <span className="text-primary">Questions</span></h1>
-          <p className="text-xl text-zinc-400">Everything you need to know about Momix APK in one place.</p>
+    <div className="container mx-auto px-4 py-12 md:py-24 max-w-4xl">
+      <div className="text-center space-y-6 mb-16">
+        <div className="w-20 h-20 bg-[#e50914]/10 rounded-3xl flex items-center justify-center mx-auto text-[#e50914] mb-8">
+          <HelpCircle size={48} />
         </div>
+        <h1 className="text-5xl md:text-7xl font-black tracking-tighter">
+          Common <span className="text-[#e50914]">Questions</span>
+        </h1>
+        <p className="text-xl text-zinc-400">Everything you need to know about Momix APK.</p>
+      </div>
 
-        <div className="space-y-12">
-          <FAQAccordion />
-        </div>
+      <div className="space-y-12">
+        <FAQAccordion />
+      </div>
 
-        <div className="mt-24 p-12 bg-[#141414] rounded-[2.5rem] border border-white/5 text-center space-y-6">
-          <h2 className="text-2xl font-bold">Still have questions?</h2>
-          <p className="text-zinc-400">If you couldn&apos;t find the answer you were looking for, feel free to reach out to us.</p>
+      <div className="mt-24 p-12 bg-[#141414] rounded-[3rem] border border-white/5 text-center space-y-6">
+        <h2 className="text-3xl font-black tracking-tighter">Still have doubts?</h2>
+        <p className="text-zinc-500 max-w-md mx-auto">If you couldn&apos;t find your answer here, feel free to reach out to our community or check our guides.</p>
+        <div className="flex justify-center pt-4">
           <a 
             href="mailto:support@momixapk.example.com" 
-            className="inline-block btn-primary px-10"
+            className="btn-primary px-12"
           >
             Contact Support
           </a>
         </div>
       </div>
-
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "Is Momix APK safe to use?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, Momix APK is 100% safe. We scan every file with multiple antivirus engines before uploading."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Do I need to pay for a subscription?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "No, Momix APK is completely free. You can watch movies, web series, and live TV channels without paying any subscription fees."
-                }
-              }
-            ]
-          })
-        }}
-      />
     </div>
   );
 }

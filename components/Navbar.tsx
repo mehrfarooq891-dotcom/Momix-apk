@@ -16,66 +16,59 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
+  const links = [
     { name: "Home", href: "/" },
     { name: "Download", href: "/download" },
-    { name: "How to Install", href: "/how-to-install" },
+    { name: "Install", href: "/how-to-install" },
     { name: "FAQ", href: "/faq" },
-    { name: "About", href: "/about" },
   ];
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/10 py-3" : "bg-transparent py-5"
-      }`}
-    >
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "glass-nav py-3" : "bg-transparent py-5"}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center font-bold text-xl">M</div>
-          <span className="text-xl font-bold tracking-tighter">MOMIX<span className="text-primary">APK</span></span>
+        <Link href="/" className="text-2xl font-black tracking-tighter flex items-center gap-1">
+          <span className="text-[#e50914]">MOMIX</span>
+          <span className="text-white">APK</span>
         </Link>
 
-        {/* Desktop Nav */}
+        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-sm font-medium hover:text-primary transition-colors"
-            >
+          {links.map((link) => (
+            <Link key={link.name} href={link.href} className="text-sm font-medium hover:text-[#e50914] transition-colors">
               {link.name}
             </Link>
           ))}
           <Link href="/download" className="btn-primary py-2 px-6 text-sm">
-            Download Now
+            <Download size={16} />
+            Download
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Toggle */}
         <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-[#141414] border-b border-white/10 py-6 px-4 flex flex-col gap-4 animate-in slide-in-from-top duration-300">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-lg font-medium py-2 border-b border-white/5"
+        <div className="md:hidden absolute top-full left-0 w-full bg-[#0a0a0a] border-b border-white/5 py-6 px-4 space-y-4 animate-in slide-in-from-top duration-300">
+          {links.map((link) => (
+            <Link 
+              key={link.name} 
+              href={link.href} 
+              className="block text-lg font-medium border-b border-white/5 pb-2"
               onClick={() => setIsOpen(false)}
             >
               {link.name}
             </Link>
           ))}
-          <Link
-            href="/download"
-            className="btn-primary text-center mt-4"
+          <Link 
+            href="/download" 
+            className="btn-primary w-full"
             onClick={() => setIsOpen(false)}
           >
+            <Download size={20} />
             Download APK
           </Link>
         </div>

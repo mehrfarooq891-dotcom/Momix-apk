@@ -2,31 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --card: #141414;
+  --primary: #e50914;
+  --accent: #e50914;
+}
+
 @layer base {
   body {
-    @apply bg-[#0a0a0a] text-white;
+    @apply bg-[#0a0a0a] text-white font-sans antialiased;
   }
 }
 
 @layer components {
-  .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
-  }
-  
   .btn-primary {
-    @apply bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full transition-all active:scale-95 shadow-lg shadow-primary/20;
+    @apply bg-[#e50914] hover:bg-[#b20710] text-white font-bold py-3 px-8 rounded-full transition-all duration-300 active:scale-95 shadow-lg shadow-red-900/20 flex items-center justify-center gap-2;
   }
   
-  .btn-gold {
-    @apply bg-accent hover:bg-accent/90 text-black font-bold py-3 px-8 rounded-full transition-all active:scale-95 shadow-lg shadow-accent/20;
+  .card-base {
+    @apply bg-[#141414] border border-white/5 rounded-2xl p-6 hover:border-red-600/30 transition-all duration-300;
+  }
+
+  .glass-nav {
+    @apply bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/5;
   }
 }
 
-/* Custom Utilities */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
 }
