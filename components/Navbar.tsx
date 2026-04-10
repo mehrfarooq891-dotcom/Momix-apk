@@ -32,13 +32,17 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center space-x-8">
           {links.map((link) => (
-            <Link key={link.name} href={link.href} className="text-sm font-medium hover:text-[#e50914] transition-colors">
+            <Link 
+              key={link.name} 
+              href={link.href} 
+              className="text-sm font-medium hover:text-[#e50914] transition-colors px-2 py-1"
+            >
               {link.name}
             </Link>
           ))}
-          <Link href="/download" className="btn-primary py-2 px-6 text-sm">
+          <Link href="/download" className="btn-primary py-2 px-6 text-sm ml-4">
             <Download size={16} />
             Download
           </Link>
